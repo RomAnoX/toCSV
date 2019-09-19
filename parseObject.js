@@ -14,7 +14,7 @@ const parseObject = options => {
 
   if (isArray(data)) {
     data.forEach((o, i) => parseObject({
-      save, config, prefix, data: o, print: i == 0
+      save, config, prefix, data: o, print: i === 0
     }));
     return;
   }
