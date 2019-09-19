@@ -20,14 +20,14 @@ const dummyData = [{
       preferredDeliveryTime: 'Morning'
     },
     {
-      typeofContact: 1,
+      typeofContact: 2,
       company: 'Empire',
-      addressLine1: 'Main Galaxy #1',
-      city: 'Unknown',
-      state: 'Unknown',
+      addressLine1: 'Main Galaxy #2',
+      city: 'Earth',
+      state: 'Sun',
       zipCode: '83284',
-      country: 'Unknown',
-      preferredDeliveryTime: 'Morning'
+      country: 'Milky Way',
+      preferredDeliveryTime: 'Afternoon'
     }
   ],
   ignoredData: {
@@ -42,7 +42,7 @@ console.log(toCSV(dummyData, {
   'root.basicInfo.maritalStatus': 'Marital Status',
   'root.basicInfo.birthDate': { ignore: true },
   'root.addresses': 'Addresses',
-  'root.addresses.typeofContact': 'Contanct',
+  'root.addresses.typeofContact': 'Contact',
   'root.addresses.addressLine1': 'Address Line',
   'root.addresses.zipCode': 'Zip Code',
   'root.addresses.preferredDeliveryTime': 'Delivery Time',
