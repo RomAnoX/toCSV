@@ -6,6 +6,7 @@ const parseObject = options => {
   const { data, save, config } = options;
   const header = key => config.name(`${prefix}.${key}`);
   const ignore = key => config.ignore(`${prefix}.${key}`);
+  const value = (key, v) => config.value(`${prefix}.${key}`, v);
   const headers = [];
   const values = [];
   const queue = [];
@@ -24,7 +25,7 @@ const parseObject = options => {
       queue.push({ prefix: `${prefix}.${key}`, data: data[key] });
     } else if (!ignore(key)) {
       if (print) headers.push(header(key));
-      values.push(data[key]);
+      values.push(value(key, data[key]));
     }
   }
 

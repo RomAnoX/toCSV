@@ -38,7 +38,7 @@ const dummyData = [{
 
 console.log(toCSV(dummyData, {
   'root': 'Profile Information',
-  'root.basicInfo.socialSecurity': { name: 'SSN' },
+  'root.basicInfo.socialSecurity': { name: 'SSN', transform: v => `***-**-${v.substr(-4)}` },
   'root.basicInfo.maritalStatus': 'Marital Status',
   'root.basicInfo.birthDate': { ignore: true },
   'root.addresses': 'Addresses',
