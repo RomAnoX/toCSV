@@ -25,6 +25,10 @@ module.exports = options => {
     ignore(key) {
       return property(key).ignore || false;
     },
+    ignoreOnEmpty(key) {
+      if (options.ignoreOnEmpty) return true;
+      return property(key).ignoreOnEmpty || false;
+    },
     hide(key) {
       return property(key).hide || false;
     }

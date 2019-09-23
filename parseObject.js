@@ -4,8 +4,9 @@ const isObject = obj => obj instanceof Object;
 const parseObject = options => {
   const { prefix = 'root', print = true } = options;
   const { data, save, config } = options;
-  const header = key => config.name(`${prefix}.${key}`);
+  const ignoreOnEmpty = key => config.ignoreOnEmpty(`${prefix}.${key}`);
   const ignore = key => config.ignore(`${prefix}.${key}`);
+  const header = key => config.name(`${prefix}.${key}`);
   const value = (key, v) => config.value(`${prefix}.${key}`, v);
   const headers = [];
   const values = [];
@@ -25,8 +26,10 @@ const parseObject = options => {
     if (isObject(data[key])) {
       queue.push({ prefix: `${prefix}.${key}`, data: data[key] });
     } else if (!ignore(key)) {
+      const keyValue = value(key, data[key]);
+      if (ignoreOnEmpty(key) && !keyValue) continue;
       if (print) headers.push(header(key));
-      values.push(value(key, data[key]));
+      values.push(keyValue);
     }
   }
 
