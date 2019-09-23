@@ -24,6 +24,9 @@ module.exports = options => {
     },
     ignore(key) {
       return property(key).ignore || false;
+    },
+    hide(key) {
+      return property(key).hide || false;
     }
   };
 };

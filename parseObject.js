@@ -30,7 +30,7 @@ const parseObject = options => {
     }
   }
 
-  if (config.name(prefix) && print) save([config.name(prefix)]);
+  if (print && !config.hide(prefix)) save([config.name(prefix)]);
   if (headers.length) save(headers);
   if (values.length) save(values);
 
