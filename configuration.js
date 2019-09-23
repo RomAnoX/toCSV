@@ -15,6 +15,13 @@ module.exports = options => {
       }
       return data;
     },
+    only(key) {
+      let list = property(key).only || null;
+      if (typeof list === 'string') {
+        list = [list];
+      }
+      return list;
+    },
     ignore(key) {
       return property(key).ignore || false;
     }

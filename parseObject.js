@@ -21,6 +21,7 @@ const parseObject = options => {
   }
 
   for (let key in data) {
+    if (config.only(prefix) && !config.only(prefix).includes(key)) continue;
     if (isObject(data[key])) {
       queue.push({ prefix: `${prefix}.${key}`, data: data[key] });
     } else if (!ignore(key)) {
