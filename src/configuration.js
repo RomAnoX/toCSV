@@ -1,8 +1,9 @@
 module.exports = options => {
   const isFunction = fn => fn && {}.toString.call(fn) === '[object Function]';
+  const isString = str => typeof str === 'string';
   const property = key => {
     const config = options[key] || {};
-    return typeof config === 'string' ? { name: config } : config;
+    return isString(config) ? { name: config } : config;
   };
 
   return {
@@ -17,10 +18,7 @@ module.exports = options => {
     },
     only(key) {
       let list = property(key).only || null;
-      if (typeof list === 'string') {
-        list = [list];
-      }
-      return list;
+      return isString(list) ? [list] : list;
     },
     ignore(key) {
       return property(key).ignore || false;

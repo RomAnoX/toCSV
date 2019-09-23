@@ -1,9 +1,7 @@
-const isArray = Array.isArray;
-const isObject = obj => obj instanceof Object;
-
-const parseObject = options => {
+const parse = options => {
   const { prefix = 'root', print = true } = options;
   const { data, save, config } = options;
+  const isObject = obj => obj instanceof Object;
   const ignoreOnEmpty = key => config.ignoreOnEmpty(`${prefix}.${key}`);
   const ignore = key => config.ignore(`${prefix}.${key}`);
   const header = key => config.name(`${prefix}.${key}`);
@@ -14,8 +12,8 @@ const parseObject = options => {
 
   if (config.ignore(prefix)) return;
 
-  if (isArray(data)) {
-    data.forEach((o, i) => parseObject({
+  if (Array.isArray(data)) {
+    data.forEach((o, i) => parse({
       save, config, prefix, data: o, print: i === 0
     }));
     return;
@@ -37,7 +35,7 @@ const parseObject = options => {
   if (headers.length) save(headers);
   if (values.length) save(values);
 
-  queue.forEach(o => parseObject({ save, config, print, ...o }));
+  queue.forEach(o => parse({ save, config, print, ...o }));
 };
 
-module.exports = parseObject;
+module.exports = parse;

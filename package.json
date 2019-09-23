@@ -5,5 +5,11 @@
   "main": "index.js",
   "repository": "git@github.com:RomAnoX/toCSV.git",
   "author": "Ulises Acosta <ulises.xsoft@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "test": "jest tests"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
 }
